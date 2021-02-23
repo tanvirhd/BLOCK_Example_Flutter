@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Employee.dart';
-import 'EmployeeBlock.dart';
+import 'EmployeeBloc.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,11 +10,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final EmployeeBlock employeeBlock = new EmployeeBlock();
+  final EmployeeBloc employeeBloc = new EmployeeBloc();
 
   @override
   void dispose() {
-    employeeBlock.dispose();
+    employeeBloc.dispose();
     super.dispose();
   }
 
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text("Employee App")),
       body: Container(
         child:  StreamBuilder<List<Employee>>(
-          stream: employeeBlock.employeeListStream,
+          stream: employeeBloc.employeeListStream,
           builder:
               (BuildContext context, AsyncSnapshot<List<Employee>> snapshot) {
             return ListView.builder(
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Icon(Icons.thumb_up),
                           color: Colors.green,
                           onPressed: (){
-                            employeeBlock.employeeSalaryInc.add(snapshot.data[index]);
+                            employeeBloc.employeeSalaryInc.add(snapshot.data[index]);
                           },
                         ),
                       ),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Icon(Icons.thumb_down),
                           color: Colors.red,
                           onPressed: (){
-                            employeeBlock.employeeSalaryDec.add(snapshot.data[index]);
+                            employeeBloc.employeeSalaryDec.add(snapshot.data[index]);
                           },
                         ),
                       )

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'Employee.dart';
 
 
-class EmployeeBlock {
+class EmployeeBloc {
   List<Employee> _employeeList=[
     Employee(1,"Employee One",10000),
     Employee(2,"Employee Two",20000),
@@ -28,7 +28,7 @@ class EmployeeBlock {
 
   StreamSink<Employee> get employeeSalaryDec => _salaryDecrementStreamController.sink;
 
-  EmployeeBlock(){
+  EmployeeBloc(){
     _employeeListStreamController.add(_employeeList);
     _salaryIncrementStreamController.stream.listen(_incSalary);
     _salaryDecrementStreamController.stream.listen(_decSalary);
